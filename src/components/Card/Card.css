@@ -1,0 +1,23 @@
+.card{
+    width: 12rem;
+    height: 18rem;
+}
+.amiibo-image{
+    background-color: #ebebeb;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height:75%;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+}
+.amiibo-name{
+    background-color: #009ac7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:25%;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    
+}
