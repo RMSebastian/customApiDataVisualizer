@@ -8,7 +8,10 @@ export type Pokemon = {
   id: string;
   name: string;
   sprites: PokemonSprites;
-  types: PokemonType[];
+  types: PokemonType[]; //1 extra data
+  //abilities
+  //stats
+  //moves
 };
 export type PokemonSprites = {
   front_default: string;
@@ -29,7 +32,11 @@ export type PokemonType = {
   slot: number;
   type: ExtraResource;
 };
-
+export type PokemonStats = {
+  stat: ExtraResource;
+  effort: number;
+  base_stat: number;
+}
 export type ExtraResource = {
   name: string;
   url: string;

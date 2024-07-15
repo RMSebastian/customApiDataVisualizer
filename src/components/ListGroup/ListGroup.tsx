@@ -33,6 +33,7 @@ const ListGroup = ({ items, heading }: Props) => {
       <h2 className="list-title">{heading}</h2>
       {getListContent()}
       <ul className="list-group-holder">
+      <div className="shadow"></div>
         <div className="list-group">
           {items.map((pokemon, index) => {
             return (

@@ -17,10 +17,15 @@
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     list-style-type: none;
-    
+}
+.list-group{
+    background-color: #00d7fc;
+    -webkit-box-shadow: inset 0px 0px 30px 5px rgba(10,115,133,1);
+    -moz-box-shadow: inset 0px 0px 30px 5px rgba(10,115,133,1);
+    box-shadow: inset 0px 0px 30px 5px rgba(10,115,133,1);
 }
 .list-element{
-    background-color: #00d7fc;
+    background-color:transparent;
     height: 15rem;
 }
 .list-element-hover{
