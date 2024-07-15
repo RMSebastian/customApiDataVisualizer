@@ -1,9 +1,9 @@
+import { Pokemon } from "../../interfaces/Pokemon";
+import HCard from "../HCard/HCard";
 import { useState } from "react";
 import "./ListGoup.css";
-import HCard from "../HCard/HCard";
-import { Amiibo } from "../../interfaces/Amiibo";
 interface Props {
-  items: Amiibo[];
+  items: Pokemon[];
   heading: string;
 }
 
@@ -12,7 +12,7 @@ const ListGroup = ({ items, heading }: Props) => {
   const [onClickIndex, setOnClickIndex] = useState<number | null>(null);
 
   const getListContent = () =>
-    items.length === 0 ? <p>No list found</p> : null;
+    items.length == 0 ? <p>No list found</p> : null;
 
   const getListDisplay = (index: number): string => {
     return `${
@@ -32,39 +32,27 @@ const ListGroup = ({ items, heading }: Props) => {
     <div className="list-body">
       <h2 className="list-title">{heading}</h2>
       {getListContent()}
-      <ul className="list-group">
-        {items.map((amiibo, index) => {
-          return (
-            <li
-              className={getListDisplay(index)}
-              onMouseEnter={() => {
-                handleOnMouseEnter(index);
-              }}
-              onClick={() => {
-                handleOnMouseClick(index);
-              }}
-              key={amiibo.tail}
-            >
-              <HCard amiibo={amiibo}></HCard>
-            </li>
-          );
-        })}
+      <ul className="list-group-holder">
+        <div className="list-group">
+          {items.map((pokemon, index) => {
+            return (
+              <li
+                className={getListDisplay(index)}
+                onMouseEnter={() => {
+                  handleOnMouseEnter(index);
+                }}
+                onClick={() => {
+                  handleOnMouseClick(index);
+                }}
+                key={pokemon.id}
+              >
+                <HCard pokemon={pokemon}></HCard>
+              </li>
+            );
+          })}
+        </div>
       </ul>
     </div>
   );
 };
 export default ListGroup;
-//   return (
-//     <li
-//       className={getListDisplay(index)}
-//       onMouseEnter={() => {
-//         handleOnMouseEnter(index);
-//       }}
-//       onClick={() => {
-//         handleOnMouseClick(index);
-//         onSelectElement(element);
-//       }}
-//       key={element}
-//     >
-//       {element}
-//     </li>

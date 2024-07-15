@@ -1,20 +1,28 @@
-import { Amiibo } from "../../interfaces/Amiibo";
+import { Pokemon } from "../../interfaces/Pokemon";
+import { Link } from "react-router-dom";
 import "./HCard.css";
 
 interface Props {
-  amiibo: Amiibo;
+  pokemon: Pokemon;
 }
 
-const HCard = ({ amiibo }: Props) => {
+const HCard = ({ pokemon }: Props) => {
   return (
-    <div className="card-horizontal">
-      <div className="amiibo-image-horizontal-holder">
-        {<img className="amiibo-image-horizontal" src={amiibo.image}></img>}
+    <Link to={`/pokemon/${pokemon.id}`} className="button-link">
+      <div className="card-horizontal">
+        <div className="amiibo-image-horizontal-holder">
+          {
+            <img
+              className="amiibo-image-horizontal"
+              src={pokemon.sprites.front_default}
+            ></img>
+          }
+        </div>
+        <div className="amiibo-name-horizontal-holder">
+          {<h3 className="amiibo-name-horizontal">{pokemon.name}</h3>}
+        </div>
       </div>
-      <div className="amiibo-name-horizontal-holder">
-        {<h3 className="amiibo-name-horizontal">{amiibo.name}</h3>}
-      </div>
-    </div>
+    </Link>
   );
 };
 

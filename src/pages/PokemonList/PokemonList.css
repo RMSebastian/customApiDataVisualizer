@@ -1,8 +1,5 @@
 body{
-    background-image:url("../public/Amiibo-background.jpg");
-    background-repeat: repeat;
-    animation: moveBackground 500s linear infinite;
-    opacity: 0.9;
+    background-color: rgb(245,7,7);
 }
 #root{
     width: 100%;

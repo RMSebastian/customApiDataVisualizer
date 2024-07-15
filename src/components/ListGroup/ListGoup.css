@@ -2,32 +2,32 @@
     margin: 1rem;
 }
 .list-title{
-    background-color: #c0e4f0;
+    background-color:gray;
     margin: 0;
     padding: 1rem;
     border-top-right-radius: 0.5rem;
     border-top-left-radius: 0.5rem;
 }
-.list-group{
-    padding: 0;
+.list-group-holder{
+    padding: 1rem;
     margin-top: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: grey;
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     list-style-type: none;
     
 }
 .list-element{
-    background-color: transparent;
+    background-color: white;
     height: 15rem;
 }
 .list-element-hover{
     height: 15rem;
-    background-color: #8f8f8f;
+    background-color: greenyellow;
 }
 .list-element-active{
     height: 15rem;
     width: 100%;
-    background-color: #c0e4f0;
+    background-color: crimson;
     
 }
