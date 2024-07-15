@@ -1,8 +1,10 @@
 .list-body{
     margin: 1rem;
+    margin-top: 10rem;
 }
 .list-title{
-    background-color:gray;
+    background-color:#f2f4e8;
+    color: #00aaf5;
     margin: 0;
     padding: 1rem;
     border-top-right-radius: 0.5rem;
@@ -11,23 +13,23 @@
 .list-group-holder{
     padding: 1rem;
     margin-top: 0;
-    background-color: grey;
+    background-color: #f2f4e8;
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     list-style-type: none;
     
 }
 .list-element{
-    background-color: white;
+    background-color: #00d7fc;
     height: 15rem;
 }
 .list-element-hover{
     height: 15rem;
-    background-color: greenyellow;
+    background-color: #30f553;
 }
 .list-element-active{
     height: 15rem;
     width: 100%;
-    background-color: crimson;
+    background-color: #00aaf5;
     
 }
