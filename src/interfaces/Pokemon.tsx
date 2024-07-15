@@ -8,10 +8,18 @@ export type Pokemon = {
   id: string;
   name: string;
   sprites: PokemonSprites;
-  types: PokemonType[]; //1 extra data
-  //abilities
-  //stats
-  //moves
+  types: PokemonType[];
+  stats: PokemonStats[];
+  abilities: PokemonAbility[];
+  moves: PokemonMove[];
+};
+export type PokemonMove = {
+  move: ExtraResource;
+};
+export type PokemonAbility = {
+  is_hidden: boolean;
+  slot: number;
+  ability: ExtraResource;
 };
 export type PokemonSprites = {
   front_default: string;
@@ -36,7 +44,8 @@ export type PokemonStats = {
   stat: ExtraResource;
   effort: number;
   base_stat: number;
-}
+};
+
 export type ExtraResource = {
   name: string;
   url: string;
