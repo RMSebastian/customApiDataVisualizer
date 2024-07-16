@@ -1,9 +1,9 @@
-import { Pokemon } from "../../interfaces/Pokemon";
+import { Character } from "../../interfaces/Character";
 import HCard from "../HCard/HCard";
 import { useState } from "react";
 import "./ListGoup.css";
 interface Props {
-  items: Pokemon[];
+  items: Character[];
   heading: string;
 }
 
@@ -33,9 +33,9 @@ const ListGroup = ({ items, heading }: Props) => {
       <h2 className="list-title">{heading}</h2>
       {getListContent()}
       <ul className="list-group-holder">
-      <div className="shadow"></div>
+        <div className="shadow"></div>
         <div className="list-group">
-          {items.map((pokemon, index) => {
+          {items.map((item, index) => {
             return (
               <li
                 className={getListDisplay(index)}
@@ -45,9 +45,9 @@ const ListGroup = ({ items, heading }: Props) => {
                 onClick={() => {
                   handleOnMouseClick(index);
                 }}
-                key={pokemon.id}
+                key={item.id}
               >
-                <HCard pokemon={pokemon}></HCard>
+                <HCard item={item}></HCard>
               </li>
             );
           })}
