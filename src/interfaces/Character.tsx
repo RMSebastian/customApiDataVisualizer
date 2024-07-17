@@ -6,6 +6,7 @@ export type CharacterApiResponse = {
     prev: string;
   };
   results: Character[]
+  error: string
 };
 export type Character = {
   id: string;

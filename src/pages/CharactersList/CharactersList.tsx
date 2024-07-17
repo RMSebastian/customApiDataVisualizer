@@ -57,25 +57,33 @@ const CharacterList = () => {
             />
             <SearchBar onSearch={query}></SearchBar>
           </div>
-          {isChecked && (
-              <ListGroup
-                key={1}
-                items={characters.results}
-                heading="Rick & Morty: Characters"
-              ></ListGroup>
-
+          {!characters.error ? (
+            <>
+              {isChecked ? (
+                <ListGroup
+                  key={1}
+                  items={characters.results}
+                  heading="Rick & Morty: Characters"
+                ></ListGroup>
+              ) : (
+                <GridGroup characters={characters.results}></GridGroup>
+              )}
+              <div>
+                {characters?.info.prev != null && (
+                  <button onClick={() => setPages(pages - 1)}>
+                    {"previous"}
+                  </button>
+                )}
+                {characters?.info.next != null && (
+                  <button onClick={() => setPages(pages + 1)}>{"next"}</button>
+                )}
+              </div>
+            </>
+          ) : (
+            <>
+              <div>Error</div>
+            </>
           )}
-          {!isChecked && (
-            <GridGroup characters={characters.results}></GridGroup>
-          )}
-          <div>
-            {characters?.info.prev != null && (
-              <button onClick={() => setPages(pages - 1)}>{"previous"}</button>
-            )}
-            {characters?.info.next != null && (
-              <button onClick={() => setPages(pages + 1)}>{"next"}</button>
-            )}
-          </div>
         </div>
       )}
     </>
