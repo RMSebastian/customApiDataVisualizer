@@ -1,15 +1,24 @@
-body{
-    background-color: #c9215a;
+body {
+  background-color: #c9215a;
 }
-#root{
-    width: 100%;
-    height: 100%;
+#root {
+  width: 100%;
+  height: 100%;
 }
-.header{
-    width: 100%;
-    display: flex;
-    background-color: #fd1956;
-    align-items: center;
-    position: fixed;
-    top: 0;
+.header {
+  width: 100%;
+  display: flex;
+  background-color: #fd1956;
+  align-items: center;
+  position: fixed;
+  top: 0;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 50px 50px; /* Espacio entre las tarjetas */
+  margin: 10rem;
+}
+
+@media (min-width: 768px) {
 }

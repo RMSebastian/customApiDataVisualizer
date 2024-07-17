@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import PokemonDetail from "./pages/CharacterDetail/CharacterDetail";
+import CharacterDetail from "./pages/CharacterDetail/CharacterDetail";
 import CharacterList from "./pages/CharactersList/CharactersList";
 
 const App = () => {
@@ -8,7 +8,7 @@ const App = () => {
       <div className="app">
         <Routes>
           <Route path="/" element={<CharacterList />} />
-          <Route path="/character/:id" element={<PokemonDetail />} />
+          <Route path="/character/:id" element={<CharacterDetail />} />
         </Routes>
       </div>
     </BrowserRouter>
