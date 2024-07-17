@@ -1,16 +1,20 @@
+import { Link } from "react-router-dom";
 import "./Card.css";
+import { Character } from "../../interfaces/Character";
 type Props = {
-  name: string;
-  image: string;
-};
-const Card = ({ name, image }: Props) => {
+  item: Character;
+}
+
+const Card = ({ item }: Props) => {
   return (
-    <div className="card">
-      <div className="card-image-holder">
-        <img className="card-image" src={image} />
+    <Link to={`/character/${item.id}`} className="button-link">
+      <div className="card">
+        <div className="card-image-holder">
+          <img className="card-image" src={item.image} />
+        </div>
+        <div className="card-name-holder">{item.name}</div>
       </div>
-      <div className="card-name-holder">{name}</div>
-    </div>
+    </Link>
   );
 };
 export default Card;

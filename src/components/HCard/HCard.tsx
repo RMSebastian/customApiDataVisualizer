@@ -2,7 +2,7 @@ import { Character } from "../../interfaces/Character";
 import { Link } from "react-router-dom";
 import "./HCard.css";
 
-interface Props {
+type Props = {
   item: Character;
 }
 

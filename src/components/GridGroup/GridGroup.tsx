@@ -13,8 +13,7 @@ const GridGroup = ({characters}:Props) => {
         return (
             <Card
             key={element.id}
-            name={element.name}
-            image={element.image}
+            item={element}
             ></Card>
         );
         })}
