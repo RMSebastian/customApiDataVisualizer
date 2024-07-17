@@ -4,8 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import "./CharactersList.css";
 import Loader from "../../components/Loader/Loader";
 import Checkbox from "../../components/Checkbox/Checkbox";
-import Card from "../../components/Card/Card";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import GridGroup from "../../components/GridGroup/GridGroup";
 
 const CharacterList = () => {
   const [pages, setPages] = useState<number>(0);
@@ -42,7 +42,6 @@ const CharacterList = () => {
 
   //TODO: prevenir result null
   const query = (value: string) => {
-    console.log("SAd");
     SetSearchPrompt(value);
   };
   return (
@@ -59,26 +58,15 @@ const CharacterList = () => {
             <SearchBar onSearch={query}></SearchBar>
           </div>
           {isChecked && (
-            <div>
               <ListGroup
                 key={1}
                 items={characters.results}
                 heading="Rick & Morty: Characters"
               ></ListGroup>
-            </div>
+
           )}
           {!isChecked && (
-            <div className="grid-container">
-              {characters.results.map((element) => {
-                return (
-                  <Card
-                    key={element.id}
-                    name={element.name}
-                    image={element.image}
-                  ></Card>
-                );
-              })}
-            </div>
+            <GridGroup characters={characters.results}></GridGroup>
           )}
           <div>
             {characters?.info.prev != null && (
