@@ -6,7 +6,7 @@ import { fetchData } from "./fetchService";
 export const getTableData = async (
   character: Character
 ): Promise<TableData[]> => {
-  const getFirstEpisode =async () => {
+  const getFirstEpisode = async () => {
     const data = await fetchData<Episode>(character!.episode[0]);
     return data.name;
   };
@@ -17,27 +17,27 @@ export const getTableData = async (
   return [
     {
       field: "Name",
-      value: character!.name,
+      value: character.name,
     },
     {
       field: "Status",
-      value: character!.status,
+      value: character.status,
     },
     {
       field: "Species",
-      value: character!.species,
+      value: character.species,
     },
     {
       field: "Gender",
-      value: character!.gender,
+      value: character.gender,
     },
     {
       field: "Origin",
-      value: character!.origin.name,
+      value: character.origin.name,
     },
     {
       field: "Location",
-      value: character!.location.name,
+      value: character.location.name,
     },
     {
       field: "First Episode",
@@ -45,7 +45,7 @@ export const getTableData = async (
     },
     {
       field: "Episodes",
-      value: getEpisodesNumbers(character!.episode),
+      value: getEpisodesNumbers(character.episode),
     },
   ];
 };
