@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 type Props = {
+  placeholder?: string;
   onSearch: (value: string) => void;
 };
 
-const SearchBar = ({ onSearch }: Props) => {
+const SearchBar = ({ onSearch, placeholder = "Search..." }: Props) => {
   const [query, setQuery] = useState("");
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
     onSearch(event.target.value);
@@ -17,7 +17,7 @@ const SearchBar = ({ onSearch }: Props) => {
         type="text"
         value={query}
         onChange={handleChange}
-        placeholder="Search..."
+        placeholder={placeholder}
         className="search-input"
       />
     </div>

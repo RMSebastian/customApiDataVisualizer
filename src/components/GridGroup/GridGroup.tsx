@@ -1,25 +1,22 @@
-import { Character } from "../../interfaces/Character"
-import Card from "../Card/Card";
+import { ReactNode } from "react";
 
-type Props = {
-    characters: Character[];
-}
+type Props<T> = {
+  items: T[];
+  renderItem: (item: T) => ReactNode;
+};
 
-const GridGroup = ({characters}:Props) => {
+const GridGroup = <T,>({ items, renderItem }: Props<T>) => {
   return (
     <>
-        <div className="grid-container">
-        {characters.map((element) => {
-        return (
-            <Card
-            key={element.id}
-            item={element}
-            ></Card>
-        );
-        })}
-    </div>
+      <div className="grid-container">
+        {items.map((element, index) => (
+          <div key={index} className="grid-container-content">
+            {renderItem(element)}
+          </div>
+        ))}
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default GridGroup
+export default GridGroup;

@@ -6,6 +6,12 @@ import Loader from "../../components/Loader/Loader";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import GridGroup from "../../components/GridGroup/GridGroup";
+import {
+  renderGridCharacter,
+  renderListCharacter,
+} from "../../services/RickAndMorty/renderService";
+
+const URL = import.meta.env.VITE_API_URL;
 
 const CharacterList = () => {
   const [pages, setPages] = useState<number>(0);
@@ -17,9 +23,9 @@ const CharacterList = () => {
 
   const getUrl = () => {
     if (searchPrompt == "") {
-      return `https://rickandmortyapi.com/api/character?page=${pages}`;
+      return `${URL}/character?page=${pages}`;
     } else {
-      return `https://rickandmortyapi.com/api/character?page=${pages}&name=${searchPrompt}`;
+      return `${URL}/character?page=${pages}&name=${searchPrompt}`;
     }
   };
 
@@ -42,6 +48,7 @@ const CharacterList = () => {
   const query = (value: string) => {
     SetSearchPrompt(value);
   };
+
   return (
     <>
       <Loader loading={characters == null} />
@@ -59,12 +66,15 @@ const CharacterList = () => {
             <>
               {isChecked ? (
                 <ListGroup
-                  key={1}
-                  items={characters.results}
                   heading="Rick & Morty: Characters"
+                  items={characters.results}
+                  renderItem={renderListCharacter}
                 ></ListGroup>
               ) : (
-                <GridGroup characters={characters.results}></GridGroup>
+                <GridGroup
+                  items={characters.results}
+                  renderItem={renderGridCharacter}
+                ></GridGroup>
               )}
               <div>
                 {characters?.info.prev != null && (

@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
 import "./Card.css";
-import { Character } from "../../interfaces/Character";
 type Props = {
-  item: Character;
-}
+  id: string;
+  name: string;
+  image: string;
+};
 
-const Card = ({ item }: Props) => {
+const Card = ({ id, name, image }: Props) => {
   return (
-    <Link to={`/character/${item.id}`} className="button-link">
+    <Link to={`/character/${id}`} className="button-link">
       <div className="card">
         <div className="card-image-holder">
-          <img className="card-image" src={item.image} />
+          <img className="card-image" src={image} />
         </div>
-        <div className="card-name-holder">{item.name}</div>
+        <div className="card-name-holder">{name}</div>
       </div>
     </Link>
   );
