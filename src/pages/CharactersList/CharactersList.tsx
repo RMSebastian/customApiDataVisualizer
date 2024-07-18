@@ -39,8 +39,6 @@ const CharacterList = () => {
   useEffect(() => {
     fetchCharacter();
   }, [fetchCharacter]);
-
-  //TODO: prevenir result null
   const query = (value: string) => {
     SetSearchPrompt(value);
   };

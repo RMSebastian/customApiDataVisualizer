@@ -9,6 +9,19 @@
     padding: 1rem;
     border-top-right-radius: 0.5rem;
     border-top-left-radius: 0.5rem;
+    border: black solid 0.15rem;
+    border-bottom: 0;
+    text-align: center;
+    text-shadow: 
+    1px 1px 0 #000, 
+    -1px 1px 0 #000,
+     1px -1px 0 #000,
+    -1px -1px 0 #000,
+     2px 2px 0 #00FF00,
+    -2px 2px 0 #00FF00,
+     2px -2px 0 #00FF00,
+    -2px -2px 0 #00FF00;
+    font-size: xx-large;                 
 }
 .list-group-holder{
     padding: 1rem;
@@ -17,24 +30,18 @@
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     list-style-type: none;
+    border: black solid 0.15rem;
+    border-top: 0;
 }
 .list-group{
     background-color: #00d7fc;
-    -webkit-box-shadow: inset 0px 0px 30px 5px rgba(10,115,133,1);
-    -moz-box-shadow: inset 0px 0px 30px 5px rgba(10,115,133,1);
-    box-shadow: inset 0px 0px 30px 5px rgba(10,115,133,1);
 }
 .list-element{
     background-color:transparent;
-    height: 15rem;
 }
 .list-element-hover{
-    height: 15rem;
     background-color: #30f553;
 }
 .list-element-active{
-    height: 15rem;
-    width: 100%;
     background-color: #00aaf5;
-    
 }

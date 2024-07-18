@@ -1,24 +1,28 @@
 .card-horizontal{
     display: flex;
     flex-direction: row;
-    height: 100%;
 };
 
 .amiibo-image-horizontal-holder{
-    width: 20%;
-    height: 100%;
-    aspect-ratio: 1;
+    flex-grow: 1;
+    display: flex;
+    width: 1rem;
 }
 .amiibo-image-horizontal{
-    height: 100%;
-    width: 100%;
     object-fit: cover;
 }
 .amiibo-name-horizontal-holder{
-    width: 80%;
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .amiibo-name-horizontal{
-    width: 100%;
-    height: 100%;
-    text-align: left;
+    font-size: xx-large;
+}
+@media (min-width: 480px) {
+    body {
+        font-size: 18px;
+        padding: 20px;
+    }
 }

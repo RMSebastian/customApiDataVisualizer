@@ -1,5 +1,5 @@
 body {
-  background-color: #c9215a;
+  background-color: #44b5cd;
 }
 #root {
   width: 100%;
@@ -8,10 +8,11 @@ body {
 .header {
   width: 100%;
   display: flex;
-  background-color: #fd1956;
+  background-color: greenyellow;
   align-items: center;
   position: fixed;
   top: 0;
+  border-bottom: black solid 0.15rem;
 }
 .grid-container {
   display: grid;
@@ -20,5 +21,3 @@ body {
   margin: 10rem;
 }
 
-@media (min-width: 768px) {
-}
