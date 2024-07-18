@@ -1,19 +1,38 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Character } from "../../interfaces/Character";
 import "./CharacterDetail.css";
 import Loader from "../../components/Loader/Loader";
-import DetailTable from "../../components/DetailTable/DetailTable";
+import DetailTable, {
+  TableData,
+} from "../../components/DetailTable/DetailTable";
+import { getTableData } from "../../services/RickAndMorty/tableService";
+import { fetchData } from "../../services/RickAndMorty/fetchService";
+import { URL } from "../../utils/exports";
+
 const CharacterDetail = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState<Character | null>(null);
-  useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((response) => response.json())
-      .then((data: Character) => {
-        setCharacter(data);
-      });
+  const [tableData, setTableData] = useState<TableData[] | null>(null);
+
+  const fetchCharacter = useCallback(async () => {
+    const data = await fetchData<Character>(`${URL}/character/${id}`);
+    setCharacter(data);
   }, [id]);
+  useEffect(() => {
+    fetchCharacter();
+  }, [fetchCharacter()]);
+
+  useEffect(() => {
+    if (character) {
+      const fetchTableData = async () => {
+        const data = await getTableData(character);
+        setTableData(data);
+      };
+
+      fetchTableData();
+    }
+  }, [character]);
   return (
     <>
       <Loader loading={character == null} />
@@ -23,7 +42,10 @@ const CharacterDetail = () => {
             <h1>{character.name}</h1>
             <div className="spacer"></div>
           </div>
-          <DetailTable character={character}></DetailTable>
+          <div className="content-image">
+            <img src={character.image} />
+          </div>
+          <DetailTable content={tableData}></DetailTable>
         </div>
       )}
     </>

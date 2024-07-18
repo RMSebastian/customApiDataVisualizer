@@ -10,43 +10,41 @@ import {
   renderGridCharacter,
   renderListCharacter,
 } from "../../services/RickAndMorty/renderService";
-
-const URL = import.meta.env.VITE_API_URL;
+import { fetchCharacters } from "../../services/RickAndMorty/fetchService";
+import { useSearchParams } from "react-router-dom";
 
 const CharacterList = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const gridView = searchParams.get("gridView") === "true";
+  const searchPrompt = searchParams.get("name") ?? " ";
+
   const [pages, setPages] = useState<number>(0);
-  const [isChecked, setIsChecked] = useState(false);
   const [characters, setCharacters] = useState<CharacterApiResponse | null>(
     null
   );
-  const [searchPrompt, SetSearchPrompt] = useState<string>("");
-
-  const getUrl = () => {
-    if (searchPrompt == "") {
-      return `${URL}/character?page=${pages}`;
-    } else {
-      return `${URL}/character?page=${pages}&name=${searchPrompt}`;
-    }
-  };
-
-  const fetchCharacter = useCallback(() => {
-    fetch(getUrl())
-      .then((response) => response.json())
-      .then((data: CharacterApiResponse) => {
-        setCharacters(data);
-      })
-      .catch((err) => console.log(err));
+  const fetchCharacterData = useCallback(async () => {
+    const data = await fetchCharacters<CharacterApiResponse>(
+      searchPrompt,
+      pages
+    );
+    setCharacters(data);
   }, [pages, searchPrompt]);
 
-  const handleCheckboxChange = (checked: boolean) => {
-    setIsChecked(checked);
-  };
-
   useEffect(() => {
-    fetchCharacter();
-  }, [fetchCharacter]);
-  const query = (value: string) => {
-    SetSearchPrompt(value);
+    fetchCharacterData();
+  }, [fetchCharacterData]);
+
+  const HandleCheckBoxViewer = (checked: boolean) => {
+    searchParams.set("gridView", checked.toString());
+    setSearchParams(searchParams);
+  };
+  const HandleSearchBarName = (value: string) => {
+    if (value == "") {
+      searchParams.delete("name");
+    } else {
+      searchParams.set("name", value.toString());
+    }
+    setSearchParams(searchParams);
   };
 
   return (
@@ -55,26 +53,26 @@ const CharacterList = () => {
       {characters != null && (
         <div className="app">
           <div className="header">
+            <SearchBar onSearch={HandleSearchBarName} />
             <Checkbox
-              label={isChecked ? "Grid" : "List"}
-              checked={isChecked}
-              onChange={handleCheckboxChange}
+              label={gridView ? "List" : "Grid"}
+              checked={gridView}
+              onChange={HandleCheckBoxViewer}
             />
-            <SearchBar onSearch={query}></SearchBar>
           </div>
           {!characters.error ? (
             <>
-              {isChecked ? (
+              {gridView ? (
                 <ListGroup
                   heading="Rick & Morty: Characters"
                   items={characters.results}
                   renderItem={renderListCharacter}
-                ></ListGroup>
+                />
               ) : (
                 <GridGroup
                   items={characters.results}
                   renderItem={renderGridCharacter}
-                ></GridGroup>
+                />
               )}
               <div>
                 {characters?.info.prev != null && (

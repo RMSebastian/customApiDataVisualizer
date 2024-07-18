@@ -1,10 +1,8 @@
-
-
-type Props ={
+type Props = {
   label: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
-}
+};
 
 const Checkbox = ({ label, checked, onChange }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,15 +10,10 @@ const Checkbox = ({ label, checked, onChange }: Props) => {
   };
 
   return (
-    <label className="checkbox-container">
+    <div className="checkbox-container">
+      <input type="checkbox" checked={checked} onChange={handleChange} />
       {label}
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={handleChange}
-      />
-
-    </label>
+    </div>
   );
 };
 

@@ -5,8 +5,8 @@ export type CharacterApiResponse = {
     next: string;
     prev: string;
   };
-  results: Character[]
-  error: string
+  results: Character[];
+  error: string;
 };
 export type Character = {
   id: string;
@@ -17,6 +17,11 @@ export type Character = {
   origin: ExtraResource;
   location: ExtraResource;
   image: string;
+  episode: string[];
+};
+export type Episode = {
+  id: string;
+  name: string;
 };
 export type ExtraResource = {
   name: string;
