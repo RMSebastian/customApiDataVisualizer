@@ -51,7 +51,7 @@ const CharacterList = () => {
     <>
       <Loader loading={characters == null} />
       {characters != null && (
-        <div className="app">
+        <>
           <div className="header">
             <SearchBar onSearch={HandleSearchBarName} />
             <Checkbox
@@ -90,7 +90,7 @@ const CharacterList = () => {
               <div>Error</div>
             </>
           )}
-        </div>
+        </>
       )}
     </>
   );
