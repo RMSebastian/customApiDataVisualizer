@@ -13,7 +13,7 @@ import {
 import { fetchCharacters } from "../../services/RickAndMorty/fetchService";
 import { useSearchParams } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
-import GridTab from "../../components/MainTab/GridTab";
+import GridTab from "../../components/GridTab/GridTab";
 
 const CharacterList = () => {
   const [searchParams, setSearchParams] = useSearchParams();

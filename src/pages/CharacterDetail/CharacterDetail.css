@@ -17,7 +17,24 @@
 }
 .content-name {
   color: var(--primary-color);
-  font-size: clamp(36px, 2vw, 42px);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.back-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+}
+.back-button button {
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media (max-width: 600px) {
   .content {

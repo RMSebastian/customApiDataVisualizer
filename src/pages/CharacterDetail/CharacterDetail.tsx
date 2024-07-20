@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Character } from "../../interfaces/Character";
 import "./CharacterDetail.css";
 import Loader from "../../components/Loader/Loader";
@@ -10,7 +10,7 @@ import { getTableData } from "../../services/RickAndMorty/tableService";
 import { fetchData } from "../../services/RickAndMorty/fetchService";
 import { URL } from "../../utils/exports";
 import NavBar from "../../components/NavBar/NavBar";
-
+import GridTab from "../../components/GridTab/GridTab";
 const CharacterDetail = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState<Character | null>(null);
@@ -39,9 +39,23 @@ const CharacterDetail = () => {
       <Loader loading={character == null} />
       {character != null && (
         <>
-          <NavBar items={<h1 className="content-name">{character.name}</h1>} />
+          <NavBar
+            items={
+              <GridTab
+                children={[
+                  <div className="back-button">
+                    <Link to={`/`} className="button-link">
+                      <button>{"Back"}</button>
+                    </Link>
+                  </div>,
+                  <h2 className="content-name">{character.name}</h2>,
+                  <></>,
+                ]}
+              />
+            }
+          />
           <div className="content">
-          <img className="content-image" src={character.image} />
+            <img className="content-image" src={character.image} />
             <DetailTable content={tableData}></DetailTable>
           </div>
         </>
