@@ -1,3 +1,4 @@
+import "./DetailTable.css";
 export type TableData = {
   field: string;
   value: string;
@@ -8,27 +9,26 @@ type Props = { content: TableData[] | null };
 const Detailtable = ({ content }: Props) => {
   return (
     <>
-      <div className="content-detail">
-        <div className="content-table">
+        <div className="table-container">
           <table>
-            <thead className="table-header">
+            <thead className="table-head">
               <tr>
-                <th className="table-header-content" scope="col">
+                <th className="table-head-content" scope="col">
                   Field
                 </th>
-                <th className="table-header-content" scope="col">
+                <th className="table-head-content" scope="col">
                   Value
                 </th>
               </tr>
             </thead>
             {content != null ? (
-              <tbody className="table-content">
+              <tbody className="table-body">
                 {content.map((item, index) => (
                   <tr key={index}>
-                    <th className="table-header-content" scope="row">
+                    <th className="table-head-content" scope="row">
                       {item.field}
                     </th>
-                    <td className="table-content-content">{item.value}</td>
+                    <td className="table-data-content">{item.value}</td>
                   </tr>
                 ))}
               </tbody>
@@ -37,7 +37,6 @@ const Detailtable = ({ content }: Props) => {
             )}
           </table>
         </div>
-      </div>
     </>
   );
 };

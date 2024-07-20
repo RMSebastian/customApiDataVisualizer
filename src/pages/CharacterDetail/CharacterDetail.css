@@ -1,0 +1,26 @@
+@import url("../../index.css");
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 90%;
+  padding: 1rem;
+  background-color: var(--secondary-background-color);
+  box-sizing: border-box;
+}
+.content-image {
+  border-radius: 50%;
+  min-width: 25px;
+  max-width: 150px;
+  padding: 1rem;
+}
+.content-name {
+  color: var(--primary-color);
+  font-size: clamp(36px, 2vw, 42px);
+}
+@media (max-width: 600px) {
+  .content {
+    flex-direction: column;
+  }
+}

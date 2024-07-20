@@ -1,0 +1,21 @@
+@import url("../../index.css");
+.table-container {
+  flex: 10;
+  width: 75%;
+  display: flex;
+  justify-content: left;
+  overflow-x:auto
+}
+.table {
+  width: 100%;
+}
+.table-head-content {
+  background-color: var(--primary-color);
+  padding: 8px;
+}
+.table-data-content {
+  background-color: var(--hover-text-color);
+  padding: 8px;
+  text-align: left;
+  font-weight: bold;
+}

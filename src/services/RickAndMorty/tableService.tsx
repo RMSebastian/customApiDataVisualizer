@@ -54,7 +54,8 @@ export const getEpisodesNumbers = (episodes: string[]): string => {
   let listOfEpisodes: string = "";
   episodes.map((element, index, array) => {
     element = GetIdFromURL(element);
-    listOfEpisodes += index == array.length - 1 ? `${element}` : `${element},`;
+    listOfEpisodes +=
+      index == array.length - 1 ? `${element}` : `${element} - `;
   });
   return listOfEpisodes;
 };

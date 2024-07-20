@@ -9,6 +9,7 @@ import DetailTable, {
 import { getTableData } from "../../services/RickAndMorty/tableService";
 import { fetchData } from "../../services/RickAndMorty/fetchService";
 import { URL } from "../../utils/exports";
+import NavBar from "../../components/NavBar/NavBar";
 
 const CharacterDetail = () => {
   const { id } = useParams();
@@ -37,16 +38,13 @@ const CharacterDetail = () => {
     <>
       <Loader loading={character == null} />
       {character != null && (
-        <div>
-          <div className="content-header">
-            <h1>{character.name}</h1>
-            <div className="spacer"></div>
+        <>
+          <NavBar items={<h1 className="content-name">{character.name}</h1>} />
+          <div className="content">
+          <img className="content-image" src={character.image} />
+            <DetailTable content={tableData}></DetailTable>
           </div>
-          <div className="content-image">
-            <img src={character.image} />
-          </div>
-          <DetailTable content={tableData}></DetailTable>
-        </div>
+        </>
       )}
     </>
   );
