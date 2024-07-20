@@ -11,8 +11,8 @@ const ListGroup = <T,>({ items, heading, renderItem }: Props<T>) => {
     <div className="list-body">
       <h1 className="list-title">{heading}</h1>
       <ul className="list-group-holder">
-        {items.map((item) => {
-          return <li>{renderItem(item)}</li>;
+        {items.map((item, index) => {
+          return <li key={index}>{renderItem(item)}</li>;
         })}
       </ul>
     </div>

@@ -8,10 +8,9 @@ type Props = {
 
 const HCard = ({ item }: Props) => {
   return (
-    
-    <Link to={`/character/${item.id}`} className="hcard">
-        <img className="hcard-image" src={item.image}></img>
-        <h3 className="hcard-name">{item.name}</h3>
+    <Link to={`/character/${item.id}`} key={item.id} className="hcard">
+      <img className="hcard-image" src={item.image}></img>
+      <h3 className="hcard-name">{item.name}</h3>
     </Link>
   );
 };
