@@ -1,3 +1,5 @@
+import "./Checkbox.css";
+
 type Props = {
   label: string;
   checked: boolean;
@@ -11,8 +13,8 @@ const Checkbox = ({ label, checked, onChange }: Props) => {
 
   return (
     <div className="checkbox-container">
+      <div className="checkbox-label">{label}</div>
       <input type="checkbox" checked={checked} onChange={handleChange} />
-      {label}
     </div>
   );
 };

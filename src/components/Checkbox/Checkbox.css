@@ -1,9 +1,46 @@
+@import url("../../index.css");
 .checkbox-container {
-  display: inline-block;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+}
+.checkbox-label {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--primary-text-color);
+  margin-right: 1rem;
+}
+
+.checkbox-container input {
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  user-select: none;
+  appearance: none;
+  background-color: var(--main-background-color);
+  width: 80px;
+  height: 50%;
+  border-radius: 1.5rem;
+}
+.checkbox-container input:checked {
+  background-color: var(--primary-color);
+}
+.checkbox-container input:before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  background: var(--primary-text-color);
+  transform: scale(1.1);
+  transition: 0.1s;
+}
+.checkbox-container input:hover:before {
+  background: var(--accent-color);
+  transition: 0.1s;
+}
+.checkbox-container input:checked:before {
+  left: 40px;
+  transition: 0.1s;
 }

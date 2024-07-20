@@ -1,0 +1,11 @@
+@import url("../../index.css");
+.navbar {
+  height: var(--nav-size);
+  width: 100%;
+  background-color: var(--secondary-background-color);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

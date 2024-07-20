@@ -12,6 +12,8 @@ import {
 } from "../../services/RickAndMorty/renderService";
 import { fetchCharacters } from "../../services/RickAndMorty/fetchService";
 import { useSearchParams } from "react-router-dom";
+import NavBar from "../../components/NavBar/NavBar";
+import GridTab from "../../components/MainTab/GridTab";
 
 const CharacterList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -52,14 +54,22 @@ const CharacterList = () => {
       <Loader loading={characters == null} />
       {characters != null && (
         <>
-          <div className="header">
-            <SearchBar onSearch={HandleSearchBarName} />
-            <Checkbox
-              label={gridView ? "List" : "Grid"}
-              checked={gridView}
-              onChange={HandleCheckBoxViewer}
-            />
-          </div>
+          <NavBar
+            items={
+              <GridTab
+                children={[
+                  <></>,
+                  <SearchBar onSearch={HandleSearchBarName} />,
+                  <Checkbox
+                    label={gridView ? "List" : "Grid"}
+                    checked={gridView}
+                    onChange={HandleCheckBoxViewer}
+                  />,
+                ]}
+              />
+            }
+          />
+          <div className="header"></div>
           {!characters.error ? (
             <>
               {gridView ? (

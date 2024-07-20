@@ -1,0 +1,32 @@
+@import url("../../index.css");
+
+.searchbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+}
+.searchbar input {
+  border: 0;
+  border-radius: 2rem;
+  background-color: var(--main-background-color);
+  color: var(--primary-color);
+  font-size: clamp(12px, 2vw, 18px);
+  height: 75%;
+  width: 90%;
+  cursor: text;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.5;
+  text-transform: capitalize;
+  transition: border 0.25s;
+}
+.searchbar input:hover {
+  border: solid var(--accent-color) 0.1rem;
+}
+.searchbar input::placeholder {
+  color: var(--primary-text-color);
+  text-align: center;
+  font-size: clamp(12px, 2vw, 18px);
+}

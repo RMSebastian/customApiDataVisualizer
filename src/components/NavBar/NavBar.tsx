@@ -1,9 +1,11 @@
-const NavBar = () => {
-  return (
-    <nav>
-      
-    </nav>
-  )
-}
+import { ReactNode } from "react";
+import "./NavBar.css";
 
-export default NavBar
+type Props = {
+  items: ReactNode;
+};
+const NavBar = ({ items }: Props) => {
+  return <nav className="navbar">{items}</nav>;
+};
+
+export default NavBar;

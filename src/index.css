@@ -19,6 +19,7 @@
   --large-border-radius: 2.5rem;
   --card-max-width: 300px;
   --card-max-height: 300px;
+  --nav-size: 60px;
 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
