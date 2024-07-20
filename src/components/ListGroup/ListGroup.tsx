@@ -9,7 +9,7 @@ type Props<T> = {
 const ListGroup = <T,>({ items, heading, renderItem }: Props<T>) => {
   return (
     <div className="list-body">
-      <h2 className="list-title">{heading}</h2>
+      <h1 className="list-title">{heading}</h1>
       <ul className="list-group-holder">
         {items.map((item) => {
           return <li>{renderItem(item)}</li>;

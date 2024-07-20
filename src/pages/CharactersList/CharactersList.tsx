@@ -18,7 +18,7 @@ const CharacterList = () => {
   const gridView = searchParams.get("gridView") === "true";
   const searchPrompt = searchParams.get("name") ?? " ";
 
-  const [pages, setPages] = useState<number>(0);
+  const [pages, setPages] = useState<number>(1);
   const [characters, setCharacters] = useState<CharacterApiResponse | null>(
     null
   );
@@ -64,30 +64,44 @@ const CharacterList = () => {
             <>
               {gridView ? (
                 <ListGroup
-                  heading="Rick & Morty: Characters"
+                  heading="Characters: List"
                   items={characters.results}
                   renderItem={renderListCharacter}
                 />
               ) : (
                 <GridGroup
+                  heading="Characters: Grid"
                   items={characters.results}
                   renderItem={renderGridCharacter}
                 />
               )}
-              <div>
-                {characters?.info.prev != null && (
-                  <button onClick={() => setPages(pages - 1)}>
-                    {"previous"}
-                  </button>
-                )}
-                {characters?.info.next != null && (
-                  <button onClick={() => setPages(pages + 1)}>{"next"}</button>
-                )}
+              <div className="buttons">
+                <button
+                  onClick={() => setPages(pages - 1)}
+                  disabled={
+                    characters?.info.prev === null || characters === null
+                  }
+                >
+                  {"previous"}
+                </button>
+                <div className="page-counter">
+                  <h1>{pages}</h1>
+                </div>
+                <button
+                  onClick={() => setPages(pages + 1)}
+                  disabled={
+                    characters?.info.next === null || characters === null
+                  }
+                >
+                  {"next"}
+                </button>
               </div>
             </>
           ) : (
             <>
-              <div>Error</div>
+              <div className="error">
+                <h1>{"Character not found"}</h1>
+              </div>
             </>
           )}
         </>

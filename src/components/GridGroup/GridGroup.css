@@ -1,0 +1,25 @@
+@import url("../../index.css");
+.grid-body {
+  width: 90%;
+  border-radius: var(--large-border-radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--secondary-background-color);
+}
+.grid-container {
+  border-radius: var(--large-border-radius);
+  background-color: var(--secondary-background-color);
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, var(--card-max-width));
+  grid-auto-rows: var(--card-max-height);
+  padding: 1rem;
+  margin: 0;
+  display: grid;
+  gap: 20px 20px;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-items: center;
+  box-sizing: border-box;
+}

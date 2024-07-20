@@ -2,23 +2,29 @@
   --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --line-height: 1.5;
   --font-weight: 400;
-  --main-background-color: #282c34;
-  --primary-color: #97ce4c;
-  --secondary-color: #f5df4d;
-  --accent-color: #61dafb;
-  --primary-text-color: #ffffff;
-  --secondary-text-color: #aaaaaa;
-  --hover-background-color: #3e4c50;
+  --main-background-color: #272b30;
+  --secondary-background-color: #32383e;
+  --primary-color: #34c3eb;
+  --secondary-color: #f7df1e;
+  --accent-color: #a3de83;
+  --primary-text-color: #e0e0e0;
+  --secondary-text-color: #8f8f8f;
+  --hover-background-color: var(--accent-color);
   --hover-text-color: #ffffff;
-  --active-background-color: #2a3e3a;
+  --active-background-color: #1b2023;
+  --disable-background-color: #cccccc;
   --active-text-color: #ffffff;
+  --disable-text-color: #666666;
   --border-radius: 0.5rem;
+  --large-border-radius: 2.5rem;
+  --card-max-width: 300px;
+  --card-max-height: 300px;
 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-#root{
+#root {
   display: flex;
   min-width: 320px;
   width: 100%;
@@ -47,13 +53,14 @@ a:hover {
 button {
   border: none;
   border-radius: var(--border-radius);
+  height: 4rem;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   font-weight: bold;
   font-family: inherit;
   text-transform: uppercase;
   cursor: pointer;
-  background-color: var(--);
+  background-color: var(--primary-color);
   color: var(--primary-text-color);
   transition: background-color 0.25s;
 }
@@ -61,11 +68,15 @@ button:hover {
   background-color: var(--hover-background-color);
   color: var(--hover-text-color);
 }
-button:active  {
-  color:var(--active-text-color);
+button:active {
+  color: var(--active-text-color);
   background-color: var(--active-background-color);
 }
-div{
-  background-color: var(--hover-background-color);
+button:disabled {
+  background-color: var(--disable-background-color);
+  color: var(--disable-text-color);
+  cursor: not-allowed;
+}
+div {
   border-radius: var(--border-radius);
 }

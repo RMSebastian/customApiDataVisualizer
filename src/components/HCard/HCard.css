@@ -1,32 +1,38 @@
-.hcard{
-    background-color: rgb(0, 255, 255);
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    border: solid inh 0.1rem;
-    border-radius: 6rem;
-    margin: 1rem;
-    transition: background-color 0.25s;
+@import url("../../index.css");
+.hcard {
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  border: solid inh 0.1rem;
+  border-radius: 6rem;
+  margin: 1rem;
+  transition: background-color 0.25s;
 }
-.hcard:hover{
-    background-color: greenyellow;
+.hcard:hover {
+  background-color: var(--hover-background-color);
+  color: var(--hover-text-color);
 }
-.hcard-name{
-    flex: 2;
-    padding: 1rem;
-    text-align: left;
-    font-size: clamp(24px, 2vw, 36px);
+.hcard:active {
+  color: var(--active-text-color);
+  background-color: var(--active-background-color);
 }
-.hcard-image{
-    flex: 1;
-    padding: 1rem;
-    min-width: 25px;
-    max-width: 150px;
-    border-radius: 50%;
+.hcard-name {
+  flex: 2;
+  padding: 1rem;
+  text-align: left;
+  font-size: clamp(24px, 2vw, 36px);
 }
-@media(min-width:400px){
-    .hcard-name{
-        text-align: center;
-    }
+.hcard-image {
+  flex: 1;
+  padding: 1rem;
+  min-width: 25px;
+  max-width: 150px;
+  border-radius: 50%;
+}
+@media (min-width: 400px) {
+  .hcard-name {
+    text-align: center;
+  }
 }

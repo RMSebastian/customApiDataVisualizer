@@ -1,21 +1,21 @@
 import { ReactNode } from "react";
-
+import "./GridGroup.css";
 type Props<T> = {
   items: T[];
   renderItem: (item: T) => ReactNode;
+  heading?: string;
 };
 
-const GridGroup = <T,>({ items, renderItem }: Props<T>) => {
+const GridGroup = <T,>({ heading = "Grid",items, renderItem }: Props<T>) => {
   return (
-    <>
-      <div className="grid-container">
-        {items.map((element, index) => (
-          <div key={index} className="grid-container-content">
-            {renderItem(element)}
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="grid-body">
+      <h1 className="list-title">{heading}</h1>
+        <div className="grid-container">
+          {items.map((element) => (
+            <>{renderItem(element)}</>
+          ))}
+        </div>
+    </div>
   );
 };
 
