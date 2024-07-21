@@ -1,18 +1,15 @@
-import { useState } from "react";
 import "./SearchBar.css";
 
 type Props = {
   placeholder?: string;
+  query: string;
   onSearch: (value: string) => void;
 };
 
-const SearchBar = ({ onSearch, placeholder = "Search" }: Props) => {
-  const [query, setQuery] = useState("");
+const SearchBar = ({ query, onSearch, placeholder = "Search" }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
     onSearch(event.target.value);
   };
-  console.log(query);
   return (
     <div className="searchbar">
       <input

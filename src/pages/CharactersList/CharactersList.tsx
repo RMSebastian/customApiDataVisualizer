@@ -30,7 +30,11 @@ const CharacterList = () => {
   );
 
   //SearchParams
-  const gridView = searchParams.get("gridView") === "true";
+  const gridParam =
+    searchParams.has("gridView") && searchParams.get("gridView") === "true";
+  const nameParam = searchParams.get("name") ?? "";
+  const genderParam = searchParams.get("gender") ?? "";
+  const statusParam = searchParams.get("status") ?? "";
 
   //UseCalback Methods
   const fetchCharacterData = useCallback(async () => {
@@ -84,20 +88,25 @@ const CharacterList = () => {
                     children={[
                       <FilterSelector
                         label="Status"
+                        value={statusParam}
                         content={getStatusData()}
                         onChange={handleFilterChange}
                       />,
                       <FilterSelector
                         label="Gender"
+                        value={genderParam}
                         content={getGenderData()}
                         onChange={handleFilterChange}
                       />,
                     ]}
                   />,
-                  <SearchBar onSearch={HandleSearchBarName} />,
+                  <SearchBar
+                    query={nameParam}
+                    onSearch={HandleSearchBarName}
+                  />,
                   <Checkbox
-                    label={gridView ? "List" : "Grid"}
-                    checked={gridView}
+                    label={gridParam ? "List" : "Grid"}
+                    checked={gridParam}
                     onChange={HandleCheckBoxViewer}
                   />,
                 ]}
@@ -107,7 +116,7 @@ const CharacterList = () => {
           <div className="header"></div>
           {!characters.error ? (
             <>
-              {gridView ? (
+              {gridParam ? (
                 <ListGroup
                   heading="Characters: List"
                   items={characters.results}

@@ -1,18 +1,17 @@
-import { useState } from "react";
 import { TableData } from "../DetailTable/DetailTable";
 import "./FilterSelector.css";
 
 type Props = {
   label: string;
+  value: string;
   content: TableData[];
   onChange: (data: TableData) => void;
 };
 
-const FilterSelector = ({ label, content, onChange }: Props) => {
-  const [selectedValue, setSelectedValue] = useState<string>("");
+const FilterSelector = ({ value, label, content, onChange }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value: string = event.target.value;
-    setSelectedValue(value);
+    console.log(value);
     onChange({ field: label.toLowerCase(), value: value });
   };
   return (
@@ -21,7 +20,7 @@ const FilterSelector = ({ label, content, onChange }: Props) => {
       <select
         className="selector-body"
         name={label}
-        value={selectedValue}
+        value={value}
         onChange={handleChange}
       >
         <option className="selector-option" key={-1} value="">
