@@ -12,6 +12,7 @@ const SearchBar = ({ onSearch, placeholder = "Search" }: Props) => {
     setQuery(event.target.value);
     onSearch(event.target.value);
   };
+  console.log(query);
   return (
     <div className="searchbar">
       <input

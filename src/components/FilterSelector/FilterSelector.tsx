@@ -5,14 +5,15 @@ import "./FilterSelector.css";
 type Props = {
   label: string;
   content: TableData[];
-  onChange: (value: string) => void;
+  onChange: (data: TableData) => void;
 };
 
 const FilterSelector = ({ label, content, onChange }: Props) => {
   const [selectedValue, setSelectedValue] = useState<string>("");
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedValue(event.target.value);
-    onChange(event.target.value);
+    const value: string = event.target.value;
+    setSelectedValue(value);
+    onChange({ field: label.toLowerCase(), value: value });
   };
   return (
     <div className="selector-container">
@@ -23,7 +24,9 @@ const FilterSelector = ({ label, content, onChange }: Props) => {
         value={selectedValue}
         onChange={handleChange}
       >
-        <option className="selector-option" key={-1} value=""></option>
+        <option className="selector-option" key={-1} value="">
+          {"All"}
+        </option>
         {content.map((item, index) => (
           <option className="selector-option" key={index} value={item.value}>
             {item.field}

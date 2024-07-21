@@ -19,28 +19,34 @@ import {
   getGenderData,
   getStatusData,
 } from "../../services/RickAndMorty/tableService";
+import { TableData } from "../../components/DetailTable/DetailTable";
 
 const CharacterList = () => {
+  //Use State variables
   const [searchParams, setSearchParams] = useSearchParams();
-  const gridView = searchParams.get("gridView") === "true";
-  const searchPrompt = searchParams.get("name") ?? " ";
-
   const [pages, setPages] = useState<number>(1);
   const [characters, setCharacters] = useState<CharacterApiResponse | null>(
     null
   );
+
+  //SearchParams
+  const gridView = searchParams.get("gridView") === "true";
+
+  //UseCalback Methods
   const fetchCharacterData = useCallback(async () => {
     const data = await fetchCharacters<CharacterApiResponse>(
-      searchPrompt,
+      searchParams,
       pages
     );
     setCharacters(data);
-  }, [pages, searchPrompt]);
+  }, [pages, searchParams]);
 
+  //UseEffect Methods
   useEffect(() => {
     fetchCharacterData();
   }, [fetchCharacterData]);
 
+  //Methods
   const HandleCheckBoxViewer = (checked: boolean) => {
     searchParams.set("gridView", checked.toString());
     setSearchParams(searchParams);
@@ -53,6 +59,18 @@ const CharacterList = () => {
     }
     setSearchParams(searchParams);
   };
+  const handleFilterChange = (data: TableData) => {
+    if (data.value == "") {
+      if (searchParams.has(data.field)) {
+        searchParams.delete(data.field);
+      }
+    } else {
+      searchParams.set(data.field, data.value);
+    }
+    setSearchParams(searchParams);
+  };
+
+  //Return Component
   return (
     <>
       <Loader loading={characters == null} />
@@ -67,12 +85,12 @@ const CharacterList = () => {
                       <FilterSelector
                         label="Status"
                         content={getStatusData()}
-                        onChange={console.log}
+                        onChange={handleFilterChange}
                       />,
                       <FilterSelector
                         label="Gender"
                         content={getGenderData()}
-                        onChange={console.log}
+                        onChange={handleFilterChange}
                       />,
                     ]}
                   />,

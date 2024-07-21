@@ -7,15 +7,24 @@ export const fetchData = async <T,>(url: string): Promise<T> => {
 };
 //CharacterList.tsx
 export const fetchCharacters = async <T,>(
-  searchPrompt: string | null,
+  searchPrompt: URLSearchParams,
   pages: number
 ): Promise<T> => {
+  const GetqueryParams = () => {
+    let queryState: string = "";
+
+    for (const [key, value] of searchPrompt.entries()) {
+      queryState += `&${key}=${value}`;
+    }
+    return queryState;
+  };
+
+  const params: string = GetqueryParams();
   const url: string =
-    searchPrompt == ""
+    params == ""
       ? `${URL}/character?page=${pages}`
-      : `${URL}/character?page=${pages}&name=${searchPrompt}`;
+      : `${URL}/character?page=${pages}${params}`;
 
   const data = await fetchData<T>(url);
-
   return data;
 };
