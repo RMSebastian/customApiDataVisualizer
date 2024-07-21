@@ -3,7 +3,7 @@ import { Character, Episode } from "../../interfaces/Character";
 import { GetIdFromURL } from "../../utils/stringConverter";
 import { fetchData } from "./fetchService";
 
-export const getTableData = async (
+export const getCharacterData = async (
   character: Character
 ): Promise<TableData[]> => {
   const getFirstEpisode = async () => {
@@ -50,6 +50,42 @@ export const getTableData = async (
   ];
 };
 
+export const getStatusData = () => {
+  return [
+    {
+      field: "Alive",
+      value: "alive",
+    },
+    {
+      field: "Dead",
+      value: "dead",
+    },
+    {
+      field: "Unknown",
+      value: "unknown",
+    },
+  ];
+};
+export const getGenderData = () => {
+  return [
+    {
+      field: "Female",
+      value: "female",
+    },
+    {
+      field: "Male",
+      value: "male",
+    },
+    {
+      field: "Genderless",
+      value: "genderless",
+    },
+    {
+      field: "Unknown",
+      value: "unknown",
+    },
+  ];
+};
 export const getEpisodesNumbers = (episodes: string[]): string => {
   let listOfEpisodes: string = "";
   episodes.map((element, index, array) => {

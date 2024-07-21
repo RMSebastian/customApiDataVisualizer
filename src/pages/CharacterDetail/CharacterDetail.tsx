@@ -6,7 +6,7 @@ import Loader from "../../components/Loader/Loader";
 import DetailTable, {
   TableData,
 } from "../../components/DetailTable/DetailTable";
-import { getTableData } from "../../services/RickAndMorty/tableService";
+import { getCharacterData } from "../../services/RickAndMorty/tableService";
 import { fetchData } from "../../services/RickAndMorty/fetchService";
 import { URL } from "../../utils/exports";
 import NavBar from "../../components/NavBar/NavBar";
@@ -27,7 +27,7 @@ const CharacterDetail = () => {
   useEffect(() => {
     if (character) {
       const fetchTableData = async () => {
-        const data = await getTableData(character);
+        const data = await getCharacterData(character);
         setTableData(data);
       };
 
