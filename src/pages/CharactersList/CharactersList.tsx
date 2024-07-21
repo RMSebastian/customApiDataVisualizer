@@ -124,7 +124,9 @@ const CharacterList = () => {
                 <button
                   onClick={() => setPages(pages - 1)}
                   disabled={
-                    characters?.info.prev === null || characters === null
+                    characters?.info.prev === null ||
+                    characters === null ||
+                    pages <= 1
                   }
                 >
                   {"previous"}
@@ -135,7 +137,9 @@ const CharacterList = () => {
                 <button
                   onClick={() => setPages(pages + 1)}
                   disabled={
-                    characters?.info.next === null || characters === null
+                    characters?.info.next === null ||
+                    characters === null ||
+                    pages >= characters.info.pages
                   }
                 >
                   {"next"}
