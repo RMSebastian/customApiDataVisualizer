@@ -37,6 +37,9 @@
   justify-content: center;
   align-items: center;
 }
+.error {
+  text-align: center;
+}
 @media (max-width: 1000px) {
   .content {
     flex-direction: column;
