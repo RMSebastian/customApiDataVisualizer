@@ -44,3 +44,9 @@
   left: 40px;
   transition: 0.1s;
 }
+
+@media (max-width: 1000px) {
+  .checkbox-container {
+    justify-content: center;
+  }
+}

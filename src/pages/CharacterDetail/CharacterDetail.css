@@ -37,7 +37,7 @@
   justify-content: center;
   align-items: center;
 }
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   .content {
     flex-direction: column;
     justify-content: center;

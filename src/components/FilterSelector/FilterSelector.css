@@ -47,3 +47,11 @@
   background-color: var(--main-background-color);
   color: var(--primary-text-color);
 }
+@media (max-width: 1000px) {
+  .selector-body {
+    height: 100%;
+  }
+  .selector-label {
+    justify-content: center;
+  }
+}

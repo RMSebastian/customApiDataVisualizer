@@ -8,10 +8,6 @@ const GridTab = ({ children }: Props) => {
   return (
     <div
       className="gridtab"
-      style={{
-        display: "grid",
-        gridTemplateColumns: `repeat(${children.length}, 1fr)`,
-      }}
     >
       {children.map((item, index) => (
         <div key={index} className="gridtab-item">
