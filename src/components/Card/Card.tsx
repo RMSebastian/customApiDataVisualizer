@@ -9,10 +9,12 @@ type Props = {
 const Card = ({ id, name, image }: Props) => {
   return (
     <Link to={`/character/${id}`} key={id} className="card">
-      <div className="card-image-holder">
-        <img className="card-image" src={image} />
+      <div key={id} className="card-image-holder">
+        <img key={id} className="card-image" src={image} />
       </div>
-      <h2 className="card-name">{name}</h2>
+      <h2 key={id + 1} className="card-name">
+        {name}
+      </h2>
     </Link>
   );
 };

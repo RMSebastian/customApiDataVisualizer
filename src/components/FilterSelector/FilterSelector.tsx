@@ -16,8 +16,11 @@ const FilterSelector = ({ value, label, content, onChange }: Props) => {
   };
   return (
     <div className="selector-container">
-      <div className="selector-label">{label}</div>
+      <div key={0} className="selector-label">
+        {label}
+      </div>
       <select
+        key={1}
         className="selector-body"
         name={label}
         value={value}

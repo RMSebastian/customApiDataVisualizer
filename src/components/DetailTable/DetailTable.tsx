@@ -32,9 +32,7 @@ const Detailtable = ({ content }: Props) => {
                 </tr>
               ))}
             </tbody>
-          ) : (
-            <div>console.error();</div>
-          )}
+          ) : null}
         </table>
       </div>
     </>

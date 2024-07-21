@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Character } from "../../interfaces/Character";
 import "./CharacterDetail.css";
@@ -36,27 +36,31 @@ const CharacterDetail = () => {
   }, [character]);
   return (
     <>
-      <Loader loading={character == null} />
+      <Loader key={0} loading={character == null} />
       {character != null && (
         <>
           <NavBar
+            key={0}
             items={
               <GridTab
+                key={0}
                 children={[
-                  <div className="back-button">
-                    <Link to={`/`} className="button-link">
-                      <button>{"Back"}</button>
+                  <div key={0} className="back-button">
+                    <Link key={0} to={`/`} className="button-link">
+                      <button key={0}>{"Back"}</button>
                     </Link>
                   </div>,
-                  <h2 className="content-name">{character.name}</h2>,
-                  <></>,
+                  <h2 key={1} className="content-name">
+                    {character.name}
+                  </h2>,
+                  <Fragment key={2}></Fragment>,
                 ]}
               />
             }
           />
-          <div className="content">
-            <img className="content-image" src={character.image} />
-            <DetailTable content={tableData}></DetailTable>
+          <div key={1} className="content">
+            <img key={0} className="content-image" src={character.image} />
+            <DetailTable key={1} content={tableData}></DetailTable>
           </div>
         </>
       )}

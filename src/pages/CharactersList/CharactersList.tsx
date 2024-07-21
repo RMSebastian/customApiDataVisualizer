@@ -83,16 +83,20 @@ const CharacterList = () => {
           <NavBar
             items={
               <GridTab
+                key={0}
                 children={[
                   <GridTab
+                    key={0}
                     children={[
                       <FilterSelector
+                        key={0}
                         label="Status"
                         value={statusParam}
                         content={getStatusData()}
                         onChange={handleFilterChange}
                       />,
                       <FilterSelector
+                        key={1}
                         label="Gender"
                         value={genderParam}
                         content={getGenderData()}
@@ -101,10 +105,12 @@ const CharacterList = () => {
                     ]}
                   />,
                   <SearchBar
+                    key={1}
                     query={nameParam}
                     onSearch={HandleSearchBarName}
                   />,
                   <Checkbox
+                    key={2}
                     label={gridParam ? "List" : "Grid"}
                     checked={gridParam}
                     onChange={HandleCheckBoxViewer}
@@ -118,19 +124,22 @@ const CharacterList = () => {
             <>
               {gridParam ? (
                 <ListGroup
+                  key={0}
                   heading="Characters: List"
                   items={characters.results}
                   renderItem={renderListCharacter}
                 />
               ) : (
                 <GridGroup
+                  key={0}
                   heading="Characters: Grid"
                   items={characters.results}
                   renderItem={renderGridCharacter}
                 />
               )}
-              <div className="buttons">
+              <div key={1} className="buttons">
                 <button
+                  key={0}
                   onClick={() => setPages(pages - 1)}
                   disabled={
                     characters?.info.prev === null ||
@@ -140,10 +149,11 @@ const CharacterList = () => {
                 >
                   {"previous"}
                 </button>
-                <div className="page-counter">
+                <div key={1} className="page-counter">
                   <h1>{pages}</h1>
                 </div>
                 <button
+                  key={2}
                   onClick={() => setPages(pages + 1)}
                   disabled={
                     characters?.info.next === null ||

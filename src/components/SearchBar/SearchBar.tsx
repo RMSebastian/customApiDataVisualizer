@@ -11,8 +11,9 @@ const SearchBar = ({ query, onSearch, placeholder = "Search" }: Props) => {
     onSearch(event.target.value);
   };
   return (
-    <div className="searchbar">
+    <div key={0} className="searchbar">
       <input
+        key={0}
         type="text"
         value={query}
         onChange={handleChange}
