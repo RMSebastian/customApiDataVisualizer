@@ -8,7 +8,14 @@ export const getCharacterData = async (
 ): Promise<TableData[]> => {
   const getFirstEpisode = async () => {
     const data = await fetchData<Episode>(character!.episode[0]);
-    return data.name;
+
+    if('error' in data){
+      return 'not found';
+    }
+    else{
+      return data.name;
+    }
+    
   };
 
   const firstEpisode: string =
