@@ -6,7 +6,6 @@ export type CharacterApiResponse = {
     prev: string;
   };
   results: Character[];
-  error: string;
 };
 export type Character = {
   id: string;
@@ -27,3 +26,8 @@ export type ExtraResource = {
   name: string;
   url: string;
 };
+
+export type ErrorApiResponse = {
+  error: string;
+  message: string;
+}

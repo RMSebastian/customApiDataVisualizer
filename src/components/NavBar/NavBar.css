@@ -9,9 +9,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 9;
 }
 @media (max-width: 1000px) {
   .navbar {
     height: calc(var(--nav-size) * 3);
+    position: relative;
   }
 }

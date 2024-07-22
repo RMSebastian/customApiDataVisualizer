@@ -9,10 +9,12 @@
   width: 100%;
   height: 100%;
   transition: background-color 0.25s;
+  transition: transform 0.25s;
 }
 .card:hover {
   background-color: var(--hover-background-color);
   color: var(--hover-text-color);
+  transform: scale(1.1);
 }
 .card:active {
   color: var(--active-text-color);

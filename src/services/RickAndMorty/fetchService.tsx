@@ -1,15 +1,20 @@
+import { ErrorApiResponse } from "../../interfaces/Character";
 import { URL } from "../../utils/exports";
 
-export const fetchData = async <T,>(url: string): Promise<T> => {
+export const fetchData = async <T,>(url: string): Promise<T | ErrorApiResponse> => {
   const response = await fetch(url);
   const data = await response.json();
-  return data;
+  if(!response.ok){
+    return data as T;
+  }else{
+    return data as ErrorApiResponse;
+  }
 };
 //CharacterList.tsx
 export const fetchCharacters = async <T,>(
   searchPrompt: URLSearchParams,
   pages: number
-): Promise<T> => {
+): Promise<T | ErrorApiResponse> => {
   const GetqueryParams = () => {
     let queryState: string = "";
 

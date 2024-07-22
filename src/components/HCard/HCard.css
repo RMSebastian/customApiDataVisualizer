@@ -9,10 +9,12 @@
   border-radius: 6rem;
   margin: 1rem;
   transition: background-color 0.25s;
+  transition: transform 0.25s;
 }
 .hcard:hover {
   background-color: var(--hover-background-color);
   color: var(--hover-text-color);
+  transform: scale(1.1);
 }
 .hcard:active {
   color: var(--active-text-color);

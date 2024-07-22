@@ -1,6 +1,6 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Character } from "../../interfaces/Character";
+import { Character, ErrorApiResponse } from "../../interfaces/Character";
 import "./CharacterDetail.css";
 import Loader from "../../components/Loader/Loader";
 import DetailTable, {
@@ -15,10 +15,17 @@ const CharacterDetail = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState<Character | null>(null);
   const [tableData, setTableData] = useState<TableData[] | null>(null);
-
+  const [error, setError] = useState<ErrorApiResponse | null>(null);
   const fetchCharacter = useCallback(async () => {
     const data = await fetchData<Character>(`${URL}/character/${id}`);
-    setCharacter(data);
+    if('error' in data){
+      setCharacter(null);
+      setError(data);
+    }
+    else{
+      setCharacter(data);
+      setError(null);
+    }
   }, [id]);
   useEffect(() => {
     fetchCharacter();
@@ -36,8 +43,8 @@ const CharacterDetail = () => {
   }, [character]);
   return (
     <>
-      <Loader key={0} loading={character == null} />
-      {character != null && (
+      <Loader key={0} loading={character == null && error == null} />
+      {character != null && error == null? (
         <>
           <NavBar
             key={0}
@@ -63,7 +70,13 @@ const CharacterDetail = () => {
             <DetailTable key={1} content={tableData}></DetailTable>
           </div>
         </>
-      )}
+      ):            
+      <>
+      <div className="error">
+        <h1>{"Character not found"}</h1>
+      </div>
+    </>
+      }
     </>
   );
 };

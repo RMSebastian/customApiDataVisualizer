@@ -1,4 +1,4 @@
-import { CharacterApiResponse } from "../../interfaces/Character";
+import { CharacterApiResponse, ErrorApiResponse } from "../../interfaces/Character";
 import ListGroup from "../../components/ListGroup/ListGroup";
 import { useCallback, useEffect, useState } from "react";
 import "./CharactersList.css";
@@ -28,7 +28,7 @@ const CharacterList = () => {
   const [characters, setCharacters] = useState<CharacterApiResponse | null>(
     null
   );
-
+  const [error, setError] = useState<ErrorApiResponse | null>(null);
   //SearchParams
   const gridParam =
     searchParams.has("gridView") && searchParams.get("gridView") === "true";
@@ -42,7 +42,14 @@ const CharacterList = () => {
       searchParams,
       pages
     );
-    setCharacters(data);
+    if('error' in data){
+      setCharacters(null);
+      setError(data);
+    }
+    else{
+      setCharacters(data);
+      setError(null);
+    }
   }, [pages, searchParams]);
 
   //UseEffect Methods
@@ -77,8 +84,8 @@ const CharacterList = () => {
   //Return Component
   return (
     <>
-      <Loader loading={characters == null} />
-      {characters != null && (
+      <Loader loading={characters == null && error ==null} />
+      
         <>
           <NavBar
             items={
@@ -120,7 +127,7 @@ const CharacterList = () => {
             }
           />
           <div className="header"></div>
-          {!characters.error ? (
+          {error == null && characters != null ? (
             <>
               {gridParam ? (
                 <ListGroup
@@ -173,7 +180,6 @@ const CharacterList = () => {
             </>
           )}
         </>
-      )}
     </>
   );
 };
